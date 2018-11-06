@@ -18,7 +18,7 @@ $row = pg_fetch_array($result);
 <body>
 <div>
 <center>
-<form method="POST" action="pg_test.php">
+<form method="POST" action="actualizador.php">
 <div>
 	<label>Nombre:</label>
 	<input type="text" name="nombre" value="<?php echo $row['nombre']?>"/>
@@ -31,7 +31,7 @@ $row = pg_fetch_array($result);
 </div>
 <div>
 	<label>Usuario:</label>
-	<input type="text" name="nnombre" value="<?php echo $row['usuario']?>"/>
+	<input type="text" name="nnombre" value="<?php echo $row['usuario']?>" readonly/>
 	<br />
 </div>
 <div>
@@ -39,7 +39,7 @@ $row = pg_fetch_array($result);
 	<input type="text" name="npassword" value="<?php echo $row['clave']?>"/>
 	<br />
 </div>
-<button type="submit">Actualizar</button>
+<button type="submit">Actualizar y Salir</button>
 </form>
 </center>
 </div>
