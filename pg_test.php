@@ -13,10 +13,9 @@ $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 if($row = pg_fetch_array($result)){
 if($row['clave'] == $pass){
-/*session_start();
+session_start();
 $_SESSION['usuario'] = $usuario;
-header("Location: contenido.php");*/
-echo "Hola";
+header("Location: principal.php");
 }else{
 header("Location: login.html");
 exit();
