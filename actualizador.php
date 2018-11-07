@@ -6,15 +6,21 @@ or die('No se ha podido conectar: ' . pg_last_error());
 
 
 //intentando chequear
-$nombre= $_POST['nombre'];
-$apellido= $_POST['apellido'];
-$pass = $_POST['npassword'];
+$passVieja = $_POST['npasswordVieja'];
+$passNueva = $_POST['npasswordNueva'];
 session_start();
-$query = "UPDATE persona SET nombre='". $nombre ."', apellido='". $apellido ."', clave='". $pass ."' where usuario='". $_SESSION['usuario'] ."'";
+$queryCon = "Select * from persona where usuario='". $_SESSION['usuario'] ."';";
+$queryAct = "UPDATE persona SET clave='". $passNueva ."' where usuario='". $_SESSION['usuario'] ."' and clave='". $passVieja . "';";
+$result = pg_query($queryCon) or die('La consulta fallo: ' . pg_last_error());
+$num = pg_num_rows($result);
+$row = pg_fetch_array($result);
 
-$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
-
-header("Location: login.html");
+if($row['clave']!=$passVieja){
+    echo "clave incorrecta";
+}else{
+    $result = pg_query($queryAct) or die('La consulta fallo: ' . pg_last_error());
+    header("Location: login.html");
+}
 
 // Liberando el conjunto de resultados
 pg_free_result($result);

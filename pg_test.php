@@ -15,6 +15,7 @@ if($row = pg_fetch_array($result)){
     if($row['clave'] == $pass){
         session_start();
         $_SESSION['usuario'] = $usuario;
+        $_SESSION['clave'] = $pass;
         header("Location: principal.php");
     }else{
         header("Location: login.html");
