@@ -1,8 +1,8 @@
 /*CREATE DATABASE tp2;*/
 
-drop table if exists usuario;
+drop table if exists persona;
 
-create table usuario (
+create table persona (
 	nombre varchar(30),
     apellido varchar(30),
     usuario varchar(30),

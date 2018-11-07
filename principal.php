@@ -4,7 +4,7 @@
 session_start();
 $dbconn = pg_connect("host=localhost dbname=tp2 port=5434 user=postgres password=demo")
 or die('No se ha podido conectar: ' . pg_last_error());
-$query = "SELECT * FROM usuario where usuario='". $_SESSION['usuario'] ."'";
+$query = "SELECT * FROM persona where usuario='". $_SESSION['usuario'] ."'";
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 $row = pg_fetch_array($result);
 

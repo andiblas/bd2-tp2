@@ -8,7 +8,7 @@ or die('No se ha podido conectar: ' . pg_last_error());
 //intentando chequear
 $usuario = $_POST['nnombre'];
 $pass = $_POST['npassword'];
-$query = "SELECT * FROM usuario where usuario='". $usuario ."'";
+$query = "SELECT * FROM persona where usuario='". $usuario ."'";
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 if($row = pg_fetch_array($result)){

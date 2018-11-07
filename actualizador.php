@@ -10,7 +10,7 @@ $nombre= $_POST['nombre'];
 $apellido= $_POST['apellido'];
 $pass = $_POST['npassword'];
 session_start();
-$query = "UPDATE usuario SET nombre='". $nombre ."', apellido='". $apellido ."', clave='". $pass ."' where usuario='". $_SESSION['usuario'] ."'";
+$query = "UPDATE persona SET nombre='". $nombre ."', apellido='". $apellido ."', clave='". $pass ."' where usuario='". $_SESSION['usuario'] ."'";
 
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 

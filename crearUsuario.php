@@ -9,8 +9,7 @@ $nombre= $_POST['nombre'];
 $apellido= $_POST['apellido'];
 $usuario= $_POST['nnombre'];
 $pass = $_POST['npassword'];
-session_start();
-$query = "INSERT INTO usuario VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $pass . "');";
+$query = "INSERT INTO persona VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $pass . "');";
 
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
@@ -23,4 +22,3 @@ pg_free_result($result);
 pg_close($dbconn);
 
 ?>
-
