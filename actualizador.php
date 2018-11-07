@@ -9,13 +9,16 @@ or die('No se ha podido conectar: ' . pg_last_error());
 $passVieja = $_POST['npasswordVieja'];
 $passNueva = $_POST['npasswordNueva'];
 session_start();
+$passViejaHash = hash('sha512', $passVieja);
+$passNuevaHash = hash('sha512', $passNueva);
+
 $queryCon = "Select * from persona where usuario='". $_SESSION['usuario'] ."';";
-$queryAct = "UPDATE persona SET clave='". $passNueva ."' where usuario='". $_SESSION['usuario'] ."' and clave='". $passVieja . "';";
+$queryAct = "UPDATE persona SET clave='". $passNuevaHash ."' where usuario='". $_SESSION['usuario'] ."' and clave='". $passViejaHash . "';";
 $result = pg_query($queryCon) or die('La consulta fallo: ' . pg_last_error());
 $num = pg_num_rows($result);
 $row = pg_fetch_array($result);
 
-if($row['clave']!=$passVieja){
+if($row['clave']!=$passViejaHash){
     echo '<script>alert("Clave incorrecta"); window.location.href="cambioClave.html";</script>';
 }else{
     $result = pg_query($queryAct) or die('La consulta fallo: ' . pg_last_error());
