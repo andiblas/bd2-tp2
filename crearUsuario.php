@@ -9,7 +9,9 @@ $nombre= $_POST['nombre'];
 $apellido= $_POST['apellido'];
 $usuario= $_POST['nnombre'];
 $pass = $_POST['npassword'];
-$query = "INSERT INTO persona VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $pass . "');";
+$passHash =  hash('sha512', $pass);
+
+$query = "INSERT INTO persona VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $passHash . "');";
 
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
