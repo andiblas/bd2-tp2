@@ -4,30 +4,23 @@
 $dbconn = pg_connect("host=localhost dbname=tp2 port=5434 user=postgres password=demo")
 or die('No se ha podido conectar: ' . pg_last_error());
 
-
 //intentando chequear
-$usuario = $_POST['nnombre'];
+$nombre= $_POST['nombre'];
+$apellido= $_POST['apellido'];
+$usuario= $_POST['nnombre'];
 $pass = $_POST['npassword'];
-$query = "SELECT * FROM usuario where usuario='". $usuario ."'";
+session_start();
+$query = "INSERT INTO usuario VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $pass . "');";
+
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
-if($row = pg_fetch_array($result)){
-    if($row['clave'] == $pass){
-        session_start();
-        $_SESSION['usuario'] = $usuario;
-        header("Location: principal.php");
-    }else{
-        header("Location: login.html");
-        exit();
-    }
-}else{
-    header("Location: login.html");
-    exit();
-}
+header("Location: login.html");
 
 // Liberando el conjunto de resultados
 pg_free_result($result);
 
 // Cerrando la conexión
 pg_close($dbconn);
+
 ?>
+

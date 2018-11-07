@@ -1,4 +1,4 @@
-	 	 	 	
+
 <?php
 // Conectando y seleccionado la base de datos
 $dbconn = pg_connect("host=localhost dbname=tp2 port=5434 user=postgres password=demo")
@@ -8,7 +8,6 @@ or die('No se ha podido conectar: ' . pg_last_error());
 //intentando chequear
 $nombre= $_POST['nombre'];
 $apellido= $_POST['apellido'];
-$usuario = $_POST['nnombre'];
 $pass = $_POST['npassword'];
 session_start();
 $query = "UPDATE usuario SET nombre='". $nombre ."', apellido='". $apellido ."', clave='". $pass ."' where usuario='". $_SESSION['usuario'] ."'";
@@ -20,7 +19,8 @@ header("Location: login.html");
 // Liberando el conjunto de resultados
 pg_free_result($result);
 
-// Cerrando la conexión
+// Cerrando la conexiÃ³n
 pg_close($dbconn);
 
 ?>
+
