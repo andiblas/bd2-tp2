@@ -16,7 +16,7 @@ $num = pg_num_rows($result);
 $row = pg_fetch_array($result);
 
 if($row['clave']!=$passVieja){
-    echo "clave incorrecta";
+    echo '<script>alert("Clave incorrecta"); window.location.href="cambioClave.html";</script>';
 }else{
     $result = pg_query($queryAct) or die('La consulta fallo: ' . pg_last_error());
     header("Location: login.html");
@@ -29,4 +29,6 @@ pg_free_result($result);
 pg_close($dbconn);
 
 ?>
+
+
 

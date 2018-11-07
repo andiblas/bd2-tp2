@@ -18,7 +18,7 @@ $row = pg_fetch_array($result);
 <body>
 <div>
     <label>Bienvenido <?php echo $row['apellido']?>, <?php echo $row['nombre']?> </label>
-    <form method="POST" action="cambioContraseña.html">
+    <form method="POST" action="cambioClave.html">
         <div>
             <br />
             <button type="submit">Cambiar contraseña</button>
