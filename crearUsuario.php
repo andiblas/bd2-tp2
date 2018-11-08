@@ -12,6 +12,7 @@ $pass = $_POST['npassword'];
 $passHash =  hash('sha512', $pass);
 
 $query = "INSERT INTO persona VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $passHash . "');";
+//$query = "INSERT INTO persona (nombre, apellido, usuario, clave)VALUES ('". $nombre ."','". $apellido ."','". $usuario ."','". $passHash . "');";
 
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
