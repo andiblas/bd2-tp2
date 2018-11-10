@@ -18,6 +18,15 @@ $row = pg_fetch_array($result);
 <body>
 <div>
     <label>Bienvenido <?php echo $row['apellido']?>, <?php echo $row['nombre']?> </label>
+    <table>
+    <?$result = mysql_query("select * from paresUsuariosNoVieronPelis union select * from paresUsuariosVieron order by id1;");
+    $result = mysql_fetch_array($result);
+    for($row =0; $row<count($result); $row++)
+    {
+        echo "<tr><td align=\"center\">".$row['id1']."</td><td align=\"center\">".$row['id2']."</td></tr>";
+    }
+    ?>
+    </table>
     <form method="POST" action="cambioClave.html">
         <div>
             <br />
